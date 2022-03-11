@@ -81,5 +81,12 @@ for frame_idx in range(1, num_frames + 1):
     if frame_idx % 50000 == 0:
         target_model.copy_from(model)
 
+torch.save(model.state_dict(), "model_"+str(frame_idx)+"_frames.pth")
+with open("losses_file.pkl", "w") as losses_file:
+    pickle.dump(losses, losses_file)
+
+with open("all_rewards_fie.pkl", "w") as all_rewards_file:
+    pickle.dump(all_rewards, all_rewards_file)
+
 
 
